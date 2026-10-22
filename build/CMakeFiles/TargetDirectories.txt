@@ -1,0 +1,3 @@
+/home/tijana/PAOO/Lucrarea3/build/CMakeFiles/Lucrarea3.dir
+/home/tijana/PAOO/Lucrarea3/build/CMakeFiles/edit_cache.dir
+/home/tijana/PAOO/Lucrarea3/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Lucrarea3.dir/src/main.cpp.o CMakeFiles/Lucrarea3.dir/src/cont.cpp.o -o Lucrarea3 

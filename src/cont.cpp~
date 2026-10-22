@@ -1,0 +1,30 @@
+#include<iostream>
+#include "inc/cont.hpp"
+
+Cont:: Cont(double income):
+  income_(new double(income)){
+  std::cout<<"Contul are "<<*income_<< " in momentul de fata"<<std::endl;
+}
+
+
+Cont::~Cont()
+{
+  std::cout<<"Stergem acum contul "<<std::endl;
+  delete income_;
+  
+}
+
+Cont::Cont(const Cont &first) income_(new double(*first.income_))
+{
+  std::cout<<"Al doilea cont a fost creat "<<income_<<std::endl;
+  
+}
+
+Cont :: Cont(Cont && first) noexcept : income_(first.income_)
+{
+  first.income_=nullptr;
+  std::cout<<"Move constrcutor\n";
+}
+
+double Cont::get() {return *income_;}
+void Cont::set(double income){*income_=income};
