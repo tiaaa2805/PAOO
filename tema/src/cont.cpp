@@ -14,17 +14,17 @@ Cont::~Cont()
   
 }
 
-Cont::Cont(const Cont &first) income_(new double(*first.income_))
+Cont::Cont(const Cont& first) : income_(new double(*first.income_))
 {
   std::cout<<"Al doilea cont a fost creat "<<income_<<std::endl;
   
 }
 
-Cont :: Cont(Cont && first) noexcept : income_(first.income_)
+Cont::Cont(Cont&& first) noexcept : income_(first.income_)
 {
   first.income_=nullptr;
   std::cout<<"Move constrcutor\n";
 }
 
 double Cont::get() {return *income_;}
-void Cont::set(double income){*income_=income};
+void Cont::set(double income){*income_=income;};

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/tema.dir/src/main.cpp.o CMakeFiles/tema.dir/src/cont.cpp.o -o tema 
