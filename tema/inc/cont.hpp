@@ -11,6 +11,21 @@ public :
   Cont(Cont&& other) noexcept;
   double get();
   void set(double income);
+  bool isEmpty();
+};
+
+
+///demonstratie Copy Constructor, daca nu il avem se va pointa catre acelasi double, vom avea Shallow Copy.
+class ContShallow{
+private: double* income;
+public:
+  ContShallow(double income);
+  ~ContShallow();
+  //fara Copy constructor
+  ContShallow(Cont&& other) noexcept;
+  double get();
+  void set(double income);
+  bool isEmpty();
 };
 
 #endif

@@ -20,8 +20,8 @@ int main()
     {
       Cont cont(23456.9);
       Cont cont2=std::move(cont);
-      std::cout<<"cont= "<<cont.get()<<std::endl;
-      
+      std::cout<<"cont= "<<cont2.get()<<std::endl;
+      std::cout<<"Contul este gol?"<<(cont.isEmpty()? "da":"nu")<<std::endl;
     }
   return 0;
 }

@@ -27,4 +27,5 @@ Cont::Cont(Cont&& first) noexcept : income_(first.income_)
 }
 
 double Cont::get() {return *income_;}
-void Cont::set(double income){*income_=income;};
+void Cont::set(double income){*income_=income;}
+bool Cont:: isEmpty() {return income_==nullptr;};
