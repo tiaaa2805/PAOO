@@ -29,3 +29,20 @@ Cont::Cont(Cont&& first) noexcept : income_(first.income_)
 double Cont::get() {return *income_;}
 void Cont::set(double income){*income_=income;}
 bool Cont:: isEmpty() {return income_==nullptr;};
+double* Cont:: adresa()const {return income_;}
+
+ContShallow:: ContShallow(double income) : income_(new double(income)){
+  std::cout<<" Constructor not-good "<<*income_<<"la adresa "<<income_<<std::endl;
+}
+
+ContShallow:: ~ContShallow(){
+  std::cout<<"Delete la adresa"<< income_<<std::endl;
+  delete income_;
+}
+
+double* ContShallow::adresa() const {
+  return income_;
+}
+
+
+void ContShallow::set(double income) {*income_=income;}
