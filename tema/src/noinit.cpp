@@ -22,6 +22,6 @@ int main()
     {
       NoInit c;
     }
-  std::cout<<"Valoarea lui nrtranzactii este intamplatoare (poate iesi si 0), folosita ca index ar scrie in afara tabloului (verificati cu valgrind)"<<std::endl;
+  std::cout<<"Valoarea lui nrtranzactii este intamplatoare (poate iesi si 0), folosita ca index ar scrie in afara tabloului"<<std::endl;
   return 0;
 }
