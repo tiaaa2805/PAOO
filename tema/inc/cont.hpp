@@ -23,7 +23,7 @@ public:
   ContShallow(double income);
   ~ContShallow();
   //fara Copy constructor
-
+  double get() const;
   double* adresa() const;
   void set(double income);
  

@@ -29,16 +29,5 @@ int main()
       std::cout<<"Contul este gol?"<<(cont.isEmpty()? "da":"nu")<<std::endl;
     }
 
-    std::cout<<" Demonstratie Copy constrcutor folosind SHallowConstructor"<<std::endl;
-    {
-      ContShallow a(3000.9);
-      ContShallow b=a;
-
-      std::cout<<"a="<<a.adresa()<<std::endl;
-      std::cout<<"b= "<<b.adresa()<<std::endl;
-
-      b.set(88.3);
-      
-    }
   return 0;
 }

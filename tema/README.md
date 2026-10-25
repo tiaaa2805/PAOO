@@ -1,1 +1,12 @@
 # PAOO
+
+
+Tema constă într-o aplicație scrisă în c++ în cadrul căreia să se abordeze următoarele subiecte discutate:
+1. build folosind cmake respectând structura discutată la laborator 
+2. încapsulare 
+3. inițializarea membrilor din constructor 
+4. eliberarea heap-ului în cadrul destructorului 
+5. suprascrierea copy constructor-ului 
+6. crearea unui move constructor 
+Pentru subpunctele 3-6 trebuie să ilustrați exemple reprezentative, care indică clar nevoia implementării acestor concepte (e.g., arătați de ce este nevoie de copy constructor și ce se poate întâmpla dacă nu este suprascris).
+ 

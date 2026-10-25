@@ -46,3 +46,7 @@ double* ContShallow::adresa() const {
 
 
 void ContShallow::set(double income) {*income_=income;}
+
+double ContShallow:: get() const {
+  return *income_;
+}

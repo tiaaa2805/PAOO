@@ -8,6 +8,12 @@ add_executable(${PROJECT_NAME}
 	inc/cont.hpp
 	src/main.cpp
 	src/cont.cpp
-)
+
+	)
+add_executable(noDelete src/nodelete.cpp)
+add_executable(shallowCopy
+  src/shallow.cpp
+  src/cont.cpp
+  inc/cont.hpp)      
 
 
