@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
 
 	)
 add_executable(noDelete src/nodelete.cpp)
+add_executable(noInit src/noinit.cpp)
 add_executable(shallowCopy
   src/shallow.cpp
   src/cont.cpp
