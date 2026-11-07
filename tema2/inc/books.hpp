@@ -33,7 +33,7 @@ class Imprumut{
 public:
   RaftBAD& raft;
   const int zile;
-
+  const int getZile() const {return zile;}
   Imprumut(RaftBAD& r, int z);
 };
 
@@ -41,23 +41,30 @@ public:
 //aici nu folosim regula celor 3, compilatorul genereaza singur copierea si copiaza doar adresa
 class RaftBAD
 {
-  std::string *titlurile;
+ 
   int locuri;//locuri disponibile
   int ocupat;///locuri ocupate
+   std::string *titlurile;
 public:
   RaftBAD(int n);
   const std::string* getTitlurile() const {return titlurile;}
   std::string getTitlu(int i) {return titlurile[i];}
-  
+  void setTitlurile(int i, std::string& titlu) {titlurile[i]=titlu;}
 };
 
 class RaftGOOD
 {
-  std::string* titluri;
+ 
   int ocupat;
   int locuri;
+   std::string* titluri;
   RaftGOOD(int n);
-  RaftGOOD(const RaftGOOD & alta);
-  RaftGOOD & operator=(const RaftGOOD& alta);)
+  RaftGOOD(const RaftGOOD & alta); ///constructor de copiere
+  RaftGOOD & operator=(const RaftGOOD& alta);) ///operator de atribuire
+  ~RaftGOOD();
+
+const std::string* getTitlurile() const {return titlurile;}
+std::string getTitlu(int i) const{return titlurile[i];}
+ void setTitlurile(int i, std::string& titlu) {titlurile[i]=titlu;}
 };
 
