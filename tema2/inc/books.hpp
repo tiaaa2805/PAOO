@@ -37,19 +37,27 @@ public:
   Imprumut(RaftBAD& r, int z);
 };
 
+
+//aici nu folosim regula celor 3, compilatorul genereaza singur copierea si copiaza doar adresa
 class RaftBAD
 {
+  std::string *titlurile;
   int locuri;//locuri disponibile
   int ocupat;///locuri ocupate
 public:
   RaftBAD(int n);
+  const std::string* getTitlurile() const {return titlurile;}
+  std::string getTitlu(int i) {return titlurile[i];}
   
- 
 };
 
 class RaftGOOD
 {
+  std::string* titluri;
   int ocupat;
   int locuri;
- 
+  RaftGOOD(int n);
+  RaftGOOD(const RaftGOOD & alta);
+  RaftGOOD & operator=(const RaftGOOD& alta);)
 };
+
