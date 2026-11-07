@@ -1,0 +1,8 @@
+# copii de backup ale editorului (Emacs etc.)
+*~
+\#*\#
+.\#*
+# fisiere de build
+build/
+# clona veche a repo-ului, nu se urca
+PAOO/
