@@ -1,4 +1,5 @@
 #include "books.hpp"
+#include<iostream>
 using namespace std;
   ///aici are loc initializarea, in format de lista de initializare
 BooksGOOD::BooksGOOD(const string& name, const string& id): nrpages_(0),  name_(name), id_(id),price_(0.0) {}
@@ -42,3 +43,21 @@ RaftGOOD:: ~RaftGOOD(){
 }
 
 Imprumut:: Imprumut(RaftBAD &r, int z): raft(r), zile(z){}
+
+
+ManuscrisBAD:: ManuscrisBAD(const std::string& titlu) : titlu(titlu)
+{
+  std::cout<<" Manuscris BAD creat : "<<titlu<<std::endl;
+}
+
+ManuscrisBAD:: ~ManuscrisBAD()
+{
+  std::cout<< "Manuscris BAD  distrus"<< titlu<<std::endl;
+}
+
+ManuscrisGOOD:: ManuscrisGOOD(const std::string titlu_) : titlu(titlu_){}
+
+ManuscrisGOOD:: ~ManuscrisGOOD()
+{
+  std::cout<<"Manuscris GOOD distrus: "<<titlu<<std::endl;
+}

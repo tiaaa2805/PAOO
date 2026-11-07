@@ -71,5 +71,27 @@ public:
   int getZile() const {return zile;}
   Imprumut(RaftBAD& r, int z);
 };
+//in acest caz nu interzicem nimic
+class ManuscrisBAD{
+private:
+  std::string titlu;
+public:
+  ManuscrisBAD(const std::string & titlu_);
+  ~ManuscrisBAD();
+  std::string getTitlu() const {return titlu;}
+};
+
+/// aici interzicem pt varianta C++11, pt varianta 98 trebuie doar sa trecem cele 2 metode in private
+class ManuscrisGOOD{
+private: std::string titlu;
+public:
+  ManuscrisGOOD(const std::string titlu_);
+  ~ManuscrisGOOD();
+  ManuscrisGOOD (const ManuscrisGOOD&)=delete;
+  ManuscrisGOOD& operator=(const ManuscrisGOOD&) =delete;
+  //aici nu le permitem sa copieze
+  std::string getTitlu() const {return titlu;}
+};
+
 
 #endif

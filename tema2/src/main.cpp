@@ -4,6 +4,7 @@
 
 int main()
 {
+  std::cout<<"-----------Item 4----------"<<std::endl;
   std::cout<<"Varianta gresita item 4\n"<<std::endl;
   BooksBAD bB("Ion", "7fvbsj8752");
   std::cout<<" numar pagini "<<bB.getNRPages()<<" pret sau este "<<bB.getPrice()<<std::endl;
@@ -20,7 +21,7 @@ int main()
   std::cout<<" Raftul bun: "<<rG.getLocuri()<<std::endl;
 
 
-  std::cout<<"Item 5"<<std::endl;
+  std::cout<<"---------------Item 5------------"<<std::endl;
   std::cout<<" Incercam functiile generate de compilator "<<std::endl;
   RaftBAD a(8);
   a.setTitlurile(0,"Ion");
@@ -40,10 +41,28 @@ int main()
   d.setTitlurile(0, "Enigma Otiliei ");
   std::cout<< "Am schimbat d, deci c[0] are tot cartea Ion"<<c.getTitlu(0)<<std::endl;
 
+  
   RaftGOOD e(2);
   e=c;
   //folosim functia noastra de atribuire
   std::cout<<" e[0] a preluat de la c "<<e.getTitlu(0)<<" iar adresa este "<< e.getTitlurile()<< std::endl;
-  
+  std::cout<<"----------------------Item6---------------"<<std::endl;
+  std::cout<<"Varianta gresita "<<std::endl;
+  {
+    ManuscrisBAD m1("Luceafarul - original ");
+    ManuscrisBAD m2(m1); //shallow copy
+    ManuscrisBAD m3("Alt manuscris");
+    m3=m1;// operator= generat de compilator
+    std::cout<<"m2="<<m2.getTitlu()<<" al doilea original"<<std::endl;
+    std::cout<<"m3="<<m2.getTitlu()<<" al treilea original"<<std::endl;
+    std::cout<<"In acest caz, manuscrisul este distrus de 3 ori"<<std::endl;
+    
+  }
+
+  std::cout<<"Varianta corecta "<<std::endl;
+  ManuscrisGOOD m1("Moara cu noroc");
+  std::cout<<"m1="<<m1.getTitlu()<<std::endl;
+  //ManuscrisGOOD m2(m1);  // Eroare fiindca folosim deleted function
+  //m1=m1 // again.folosim deleted function
   return 0;
 }
