@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(${PROJECT_NAME}
-	inc/cont.hpp
+	inc/books.hpp
 	src/main.cpp
-	src/cont.cpp
+	src/books.cpp
 
 	)
