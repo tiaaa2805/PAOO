@@ -11,10 +11,11 @@ BooksBAD::BooksBAD(const string& name, const string& id)
     }
 
 RaftBAD::  RaftBAD( int ocupat_): ocupat(ocupat_), locuri(ocupat+7), titluri(new std::string[ocupat_+7]) {}  ///ordinea este gresita
+//locuri e declarat primul in clasa, deci se calculeaza cu ocupat care inca nu are valoare
 //nu facem nici copiere si nici destructor, le face compilatorul
-RaftGOOD::  RaftGOOD(int ocupat_): ocupat(ocupat_), locuri(ocupat +7), titluri(new std::string[locuri]){}
+RaftGOOD::  RaftGOOD(int ocupat_): ocupat(ocupat_), locuri(ocupat +7), titluri(new std::string[locuri]){} ///aici ordinea e aceeasi ca in clasa
 
-
+//alocam memorie noua si copiem fiecare titlu, nu doar adresa
 RaftGOOD:: RaftGOOD(const RaftGOOD & alt) : ocupat(alt.ocupat), locuri(alt.locuri), titluri(new std::string[alt.locuri])
 {
   for(int i=0; i<alt.ocupat; i++)
@@ -39,9 +40,11 @@ RaftGOOD& RaftGOOD::operator=(const RaftGOOD & alt)
 
 
 RaftGOOD:: ~RaftGOOD(){
-  delete[] titluri;
+  delete[] titluri; //fiecare raft isi sterge vectorul lui
+
 }
 
+///referinta si const se pot initializa doar in lista
 Imprumut:: Imprumut(RaftBAD &r, int z): raft(r), zile(z){}
 
 
@@ -60,4 +63,18 @@ ManuscrisGOOD:: ManuscrisGOOD(const std::string titlu_) : titlu(titlu_){}
 ManuscrisGOOD:: ~ManuscrisGOOD()
 {
   std::cout<<"Manuscris GOOD distrus: "<<titlu<<std::endl;
+}
+
+
+Biblioteca:: Biblioteca(): nrCarti(100)
+{
+  std::cout<<"Biblioteca construita "<<std::endl;
+}
+///Gresita:: obiectul global, nu stim cand se construieste
+Biblioteca bibliotecaGlobala;
+//Corect: se construieste garantat
+Biblioteca& biblioteca()
+{
+  static Biblioteca b;
+  return b;
 }

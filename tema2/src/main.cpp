@@ -15,7 +15,7 @@ int main()
 
 
   std::cout<<" Ordinea pe rafturi item4"<<std::endl;
-  RaftBAD rB(5);
+  RaftBAD rB(5);//aici locuri o sa aiba o valoare aleatoare
   RaftGOOD rG(5);
   std::cout<<" Raftul rau: "<< rB.getLocuri()<<std::endl;
   std::cout<<" Raftul bun: "<<rG.getLocuri()<<std::endl;
@@ -25,7 +25,7 @@ int main()
   std::cout<<" Incercam functiile generate de compilator "<<std::endl;
   RaftBAD a(8);
   a.setTitlurile(0,"Ion");
-  RaftBAD b=a;
+  RaftBAD b=a; //copierea facuta de compilator
   std::cout<<" A.titluri ="<<a.getTitlurile()<<std::endl;
   std::cout<<" B.titluri="<<b.getTitlurile()<<std::endl;
   //aici vom avea aceeasi adresa
@@ -35,7 +35,7 @@ int main()
   std::cout<<"Acum varianta buna "<<std::endl;
   RaftGOOD c(2);
   c.setTitlurile(0,"Ion");
-  RaftGOOD d=c;
+  RaftGOOD d=c;///se apeleaza constructorul nostru de copiere
     std::cout<<" C.titluri ="<<c.getTitlurile()<<std::endl;
   std::cout<<" D.titluri="<<d.getTitlurile()<<std::endl;
   d.setTitlurile(0, "Enigma Otiliei ");
@@ -48,6 +48,7 @@ int main()
   std::cout<<" e[0] a preluat de la c "<<e.getTitlu(0)<<" iar adresa este "<< e.getTitlurile()<< std::endl;
   std::cout<<"----------------------Item6---------------"<<std::endl;
   std::cout<<"Varianta gresita "<<std::endl;
+  //acolada ca sa vedem cand se apeleaza destructorii
   {
     ManuscrisBAD m1("Luceafarul - original ");
     ManuscrisBAD m2(m1); //shallow copy
@@ -64,5 +65,15 @@ int main()
   std::cout<<"m1="<<m1.getTitlu()<<std::endl;
   //ManuscrisGOOD m2(m1);  // Eroare fiindca folosim deleted function
   //m1=m1 // again.folosim deleted function
+
+
+  int cartiBAD=bibliotecaGlobala.getNrCarti();  ///poate rula inainte de constructor ->0
+
+  int cartiGOOD=biblioteca().getNrCarti();
+  ///mereu 100
+
+  std::cout<<" Obiecte globale din fisiere diferite "<<std::endl;
+  std::cout<< " Gresit: cartiBad ="<<cartiBAD<<" nu este 100"<<std::endl;
+  std::cout<< "Corect: cartiGOOD ="<< cartiGOOD<< std::endl;
   return 0;
 }

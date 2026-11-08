@@ -1,6 +1,7 @@
 #ifndef BOOKS_HPP
 #define BOOKS_HPP
 #include<string>
+//item 4, aici toate campurile primesc valoare in constructor
 class BooksGOOD{
 private:
   int nrpages_;
@@ -48,14 +49,14 @@ public:
 class RaftGOOD
 {
 private:
-  int ocupat;
+  int ocupat;//ocupat e primul, ca sa fie initializat inainte de locuri
   int locuri;
    std::string* titluri;
 public:
   RaftGOOD(int n);
   RaftGOOD(const RaftGOOD & alta); ///constructor de copiere
   RaftGOOD & operator=(const RaftGOOD& alta); ///operator de atribuire
-  ~RaftGOOD();
+  ~RaftGOOD(); ///elibereaza vectorul de titluri
 const std::string* getTitlurile() const {return titluri;}
 std::string getTitlu(int i) const{return titluri[i];}
  void setTitlurile(int i, const std::string& titlu) {titluri[i]=titlu;}
@@ -66,7 +67,7 @@ std::string getTitlu(int i) const{return titluri[i];}
 ///operator+ sters: referinta+const
 class Imprumut{
 public:
-  RaftBAD& raft;
+  RaftBAD& raft;//referinta nu se poate muta pe alt raft
   const int zile;
   int getZile() const {return zile;}
   Imprumut(RaftBAD& r, int z);
@@ -93,5 +94,15 @@ public:
   std::string getTitlu() const {return titlu;}
 };
 
+class Biblioteca{
+private:
+  int nrCarti;
+public:
+  Biblioteca();
+  int getNrCarti() const {return nrCarti;}
+};
+
+extern Biblioteca bibliotecaGlobala; //GRESITA, un obiect global
+Biblioteca& biblioteca(); ///Corect: o functie statica care returneaza un obiect
 
 #endif
