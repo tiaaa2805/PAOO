@@ -1,6 +1,10 @@
 #include "books.hpp"
 #include <iostream>
 
+  int cartiBAD=bibliotecaGlobala.getNrCarti();  ///poate rula inainte de constructor ->0
+
+  int cartiGOOD=biblioteca().getNrCarti();
+  ///mereu 100
 
 int main()
 {
@@ -20,6 +24,13 @@ int main()
   std::cout<<" Raftul rau: "<< rB.getLocuri()<<std::endl;
   std::cout<<" Raftul bun: "<<rG.getLocuri()<<std::endl;
 
+  std::cout<<"exemplu de imprumut"<<std::endl;
+  RaftBAD r1(1), r2(1);
+  Imprumut i1(r1,16), i2(r2,7);
+  Imprumut i3(i1); //aici merge constructorul de copiere fiindca initializeaza
+
+  std::cout<<"i3 zile="<< i3.getZile()<<std::endl;
+  //i2=i1;  nu merge atribuirea
 
   std::cout<<"---------------Item 5------------"<<std::endl;
   std::cout<<" Incercam functiile generate de compilator "<<std::endl;
@@ -67,10 +78,6 @@ int main()
   //m1=m1 // again.folosim deleted function
 
 
-  int cartiBAD=bibliotecaGlobala.getNrCarti();  ///poate rula inainte de constructor ->0
-
-  int cartiGOOD=biblioteca().getNrCarti();
-  ///mereu 100
 
   std::cout<<" Obiecte globale din fisiere diferite "<<std::endl;
   std::cout<< " Gresit: cartiBad ="<<cartiBAD<<" nu este 100"<<std::endl;
