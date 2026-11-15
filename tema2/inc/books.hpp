@@ -1,0 +1,108 @@
+#ifndef BOOKS_HPP
+#define BOOKS_HPP
+#include<string>
+//item 4, aici toate campurile primesc valoare in constructor
+class BooksGOOD{
+private:
+  int nrpages_;
+  std::string name_, id_;
+  double price_;
+
+public:
+  BooksGOOD(const std::string& name_, const std::string& id_);
+  BooksGOOD(const BooksGOOD* alta);
+  
+  int getNRPages() const {return nrpages_;}
+  double getPrice() const {return price_;}
+ };
+
+  class BooksBAD{
+private:
+  int nrpages_;
+  std::string name_, id_;
+  double price_;
+  public:
+    BooksBAD(const std::string& name_, const std::string& id_);
+     //compilatorul genereaza copiere, copiaza doar adresa
+      int getNRPages()const {return nrpages_;};
+  double getPrice() const {return price_;}; 
+
+  };
+
+
+//aici nu folosim regula celor 3, compilatorul genereaza singur copierea si copiaza doar adresa
+class RaftBAD
+{
+private:
+  int locuri;//locuri disponibile
+  int ocupat;///locuri ocupate
+   std::string *titluri;
+public:
+  RaftBAD(int n);
+  const std::string* getTitlurile() const {return titluri;}
+  std::string getTitlu(int i) {return titluri[i];}
+  void setTitlurile(int i, const std::string& titlu) {titluri[i]=titlu;}
+  int getLocuri()const {return locuri;}
+  int getOcupat() const {return ocupat;}
+};
+
+class RaftGOOD
+{
+private:
+  int ocupat;//ocupat e primul, ca sa fie initializat inainte de locuri
+  int locuri;
+   std::string* titluri;
+public:
+  RaftGOOD(int n);
+  RaftGOOD(const RaftGOOD & alta); ///constructor de copiere
+  RaftGOOD & operator=(const RaftGOOD& alta); ///operator de atribuire
+  ~RaftGOOD(); ///elibereaza vectorul de titluri
+const std::string* getTitlurile() const {return titluri;}
+std::string getTitlu(int i) const{return titluri[i];}
+ void setTitlurile(int i, const std::string& titlu) {titluri[i]=titlu;}
+  int getLocuri() const{return locuri;}
+  int getOcupat() const {return ocupat;}
+};
+
+///operator+ sters: referinta+const
+class Imprumut{
+public:
+  RaftBAD& raft;//referinta nu se poate muta pe alt raft
+  const int zile;
+  int getZile() const {return zile;}
+  Imprumut(RaftBAD& r, int z);
+};
+//in acest caz nu interzicem nimic
+class ManuscrisBAD{
+private:
+  std::string titlu;
+public:
+  ManuscrisBAD(const std::string & titlu_);
+  ~ManuscrisBAD();
+  std::string getTitlu() const {return titlu;}
+};
+
+/// aici interzicem pt varianta C++11, pt varianta 98 trebuie doar sa trecem cele 2 metode in private
+class ManuscrisGOOD{
+private: std::string titlu;
+public:
+  ManuscrisGOOD(const std::string titlu_);
+  ~ManuscrisGOOD();
+  ManuscrisGOOD (const ManuscrisGOOD&)=delete;
+  ManuscrisGOOD& operator=(const ManuscrisGOOD&) =delete;
+  //aici nu le permitem sa copieze
+  std::string getTitlu() const {return titlu;}
+};
+
+class Biblioteca{
+private:
+  int nrCarti;
+public:
+  Biblioteca();
+  int getNrCarti() const {return nrCarti;}
+};
+
+extern Biblioteca bibliotecaGlobala; //GRESITA, un obiect global
+Biblioteca& biblioteca(); ///Corect: o functie statica care returneaza un obiect
+
+#endif
