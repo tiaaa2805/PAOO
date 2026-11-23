@@ -3,7 +3,6 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
-#include <vector>
 
 // Item 13: o functie care poate arunca exceptie in mijlocul lucrului
 void vanzare(Produs& p, int cantitate) {
@@ -95,15 +94,6 @@ ProdusFaraBaza copie(orig);
     vanzare(*lapte, 100);   // arunca exceptie...
     delete lapte;           // ...deci linia asta nu se executa: memory leak
 */
-
-    // unique_ptr si pentru produse de tipuri diferite (destructorul virtual din Produs)
-    {
-        std::vector<std::unique_ptr<Produs>> raft;
-        raft.push_back(std::make_unique<Produs>("Paine", 3.0f, 20));
-        raft.push_back(std::make_unique<ProdusPerisabil>("Smantana", 6.0f, 15, 10));
-        for (const auto& p : raft) p->afiseaza();
-        std::cout << "Raftul iese din scope:" << std::endl;
-    }   // fara niciun delete: unique_ptr sterge fiecare produs
 
     std::cout << "Item 14: politici de copiere pentru resurse " << std::endl;
 
