@@ -105,8 +105,7 @@ ProdusFaraBaza copie(orig);
         std::cout << "Raftul iese din scope:" << std::endl;
     }   // fara niciun delete: unique_ptr sterge fiecare produs
 
-    // ===================================================================
-    std::cout << "\n===== Item 14: politici de copiere pentru resurse =====" << std::endl;
+    std::cout << "Item 14: politici de copiere pentru resurse " << std::endl;
 
     std::cout << "-- a) + d) unique_ptr: copiere interzisa, mutare permisa --" << std::endl;
     {
@@ -117,7 +116,7 @@ ProdusFaraBaza copie(orig);
         std::cout << "p3: "; p3->afiseaza();
     }
 
-    std::cout << "-- b) shared_ptr: furnizor comun, numarare de referinte --" << std::endl;
+    std::cout << "b) shared_ptr: furnizor comun, numarare de referinte " << std::endl;
     {
         auto furnizor = std::make_shared<std::string>("Lactate SRL");
         std::cout << "Folosiri furnizor la inceput: " << furnizor.use_count() << std::endl;   // 1
@@ -130,7 +129,7 @@ ProdusFaraBaza copie(orig);
         copie.afiseaza();
     }
 
-    std::cout << "-- c) deep copy: fiecare produs are numele lui --" << std::endl;
+    std::cout << "c) deep copy: fiecare produs are numele lui " << std::endl;
     {
         Produs original("Zahar", 4.0f, 30);
         Produs copie(original);
